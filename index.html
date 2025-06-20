@@ -36,17 +36,35 @@
 </body>
 </html>
 
+
+
 <?php
-// Ambil data dari form
-$nomor = $_POST['nomor'];
-$provider = $_POST['provider'];
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "pulsa";
+
+$conn = mysqli_connect($host, $user, $pass, $db);
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+?>
+
+
+<?php
+include 'koneksi.php';
+
+$nomor   = $_POST['nomor'];
 $nominal = $_POST['nominal'];
 
-// Simulasi proses (nanti bisa diganti API request)
-echo "<h2>Transaksi Berhasil!</h2>";
-echo "<p>Nomor: <strong>$nomor</strong></p>";
-echo "<p>Provider: <strong>$provider</strong></p>";
-echo "<p>Nominal: <strong>Rp " . number_format($nominal, 0, ',', '.') . "</strong></p>";
-echo "<a href='index.html'>Kembali</a>";
+$sql = "INSERT INTO transaksi (nomor_hp, nominal) VALUES ('$nomor', '$nominal')";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Pembelian berhasil untuk nomor $nomor sejumlah Rp$nominal";
+} else {
+    echo "Gagal: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
 ?>
 
