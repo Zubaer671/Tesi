@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Beli Pulsa Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Form Pembelian Pulsa</h1>
+    <form action="proses.php" method="POST">
+      <label>Nomor HP:</label>
+      <input type="text" name="nomor" placeholder="08xxxxxxxxxx" required>
+
+      <label>Provider:</label>
+      <select name="provider" required>
+        <option value="">-- Pilih Provider --</option>
+        <option value="Telkomsel">Telkomsel</option>
+        <option value="Indosat">Indosat</option>
+        <option value="XL">XL</option>
+        <option value="Tri">Tri</option>
+      </select>
+
+      <label>Nominal:</label>
+      <select name="nominal" required>
+        <option value="">-- Pilih Nominal --</option>
+        <option value="5000">Rp 5.000</option>
+        <option value="10000">Rp 10.000</option>
+        <option value="20000">Rp 20.000</option>
+        <option value="50000">Rp 50.000</option>
+      </select>
+
+      <button type="submit">Beli Sekarang</button>
+    </form>
+  </div>
+</body>
+</html>

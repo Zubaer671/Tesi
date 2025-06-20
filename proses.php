@@ -1,19 +1,13 @@
 <?php
-include 'config.php';
-
-$nama  = $_POST['nama'];
+// Ambil data dari form
 $nomor = $_POST['nomor'];
-$paket = $_POST['paket'];
-$tanggal = date("Y-m-d H:i:s");
+$provider = $_POST['provider'];
+$nominal = $_POST['nominal'];
 
-$sql = "INSERT INTO pesanan (nama, nomor, paket, tanggal)
-        VALUES ('$nama', '$nomor', '$paket', '$tanggal')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Pesanan berhasil disimpan! Silakan tunggu konfirmasi.";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
+// Simulasi proses (nanti bisa diganti API request)
+echo "<h2>Transaksi Berhasil!</h2>";
+echo "<p>Nomor: <strong>$nomor</strong></p>";
+echo "<p>Provider: <strong>$provider</strong></p>";
+echo "<p>Nominal: <strong>Rp " . number_format($nominal, 0, ',', '.') . "</strong></p>";
+echo "<a href='index.html'>Kembali</a>";
 ?>
